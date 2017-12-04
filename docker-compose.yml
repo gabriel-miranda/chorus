@@ -3,9 +3,19 @@ services:
   api:
     build:
       context: .
-      dockerfile: docker/Dockerfile.api
-    command: yarn start-api
+      dockerfile: docker/Dockerfile.base
+    command: yarn api-dev
     volumes:
       - .:/home/app/chorus
     ports:
       - 3000:3000
+
+  www:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.base
+    command: yarn www-dev
+    volumes:
+      - .:/home/app/chorus
+    ports:
+      - 8080:8080

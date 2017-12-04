@@ -4,12 +4,16 @@
   "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
-    "fastify": "^0.35.3"
+    "fastify": "^0.35.3",
+    "next": "^4.1.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -20,7 +24,10 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "scripts": {
-    "start-api": "babel-node ./src/api",
+    "api-dev": "babel-node ./src/api",
+    "www-dev": "next src/www -p 8080",
+    "www-build": "next build src/www",
+    "www-prod": "next start src/www -p 8080",
     "lint": "eslint src"
   },
   "repository": {

@@ -69,4 +69,5 @@ npm-debug.log*
 *-compiled.js
 *-compiled.js.map
 .DS_Store
+.next/
 

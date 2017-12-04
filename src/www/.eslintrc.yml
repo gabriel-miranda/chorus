@@ -1,0 +1,8 @@
+env:
+  browser: true
+  node: true
+plugins:
+  - react
+rules:
+  react/no-multi-comp: 0
+  react/jsx-filename-extension: 0
