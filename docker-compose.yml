@@ -1,0 +1,11 @@
+version: "2"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    command: yarn start-api
+    volumes:
+      - .:/home/app/chorus
+    ports:
+      - 3000:3000

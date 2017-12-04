@@ -1,0 +1,12 @@
+FROM node:9.2-slim
+
+RUN useradd --user-group --create-home --shell /bin/false app
+ENV HOME=/home/app
+ENV CHORUS_ROOT=$HOME/chorus
+WORKDIR $CHORUS_ROOT
+
+ADD package.json $CHORUS_ROOT/package.json
+ADD yarn.lock $CHORUS_ROOT/yarn.lock
+
+RUN chown -R app:app $HOME/*
+RUN yarn

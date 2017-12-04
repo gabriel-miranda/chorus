@@ -1,0 +1,43 @@
+{
+  "name": "chorus",
+  "description": "Chorus is a CMS with modern technologies currently under construction.",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "fastify": "^0.35.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1"
+  },
+  "scripts": {
+    "start-api": "babel-node ./src/api",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriel-miranda/chorus.git"
+  },
+  "keywords": [
+    "react",
+    "next.js",
+    "fastify",
+    "cms",
+    "docker"
+  ],
+  "author": "Gabriel Miranda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabriel-miranda/chorus/issues"
+  },
+  "homepage": "https://github.com/gabriel-miranda/chorus#readme"
+}
