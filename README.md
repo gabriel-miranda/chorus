@@ -1,10 +1,11 @@
 
 # Chorus
-Chorus is a CMS with modern technologies currently under construction.
+Chorus is a CMS with modern technologies currently under construction. Right now is for development environments and educational purposes only.
 
 ## Contents
 
 - [About](#about)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Development Workflow](#development-workflow)
 
@@ -18,6 +19,8 @@ Chorus uses the following technologies
 * [Next.js](https://github.com/zeit/next.js/)
 * [node.js](https://github.com/nodejs/node)
 * [fastify.js](https://github.com/fastify/fastify)
+* [GraphQL](http://graphql.org/)
+* [MongoDB](https://www.mongodb.com/)
 * [Yarn](https://github.com/yarnpkg/yarn)
 * [Babel](https://babeljs.io)
 * [ESLint](http://eslint.org)
