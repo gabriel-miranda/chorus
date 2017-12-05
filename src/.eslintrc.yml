@@ -14,3 +14,5 @@ rules:
   import/no-unresolved: 0
   import/no-named-as-default: 2
   jsx-a11y/anchor-is-valid: 0
+  no-underscore-dangle: 0
+  new-cap: 0

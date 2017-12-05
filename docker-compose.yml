@@ -11,6 +11,10 @@ services:
       - /home/app/chorus/node_modules
     ports:
       - 3001:3001
+    links:
+      - database
+    depends_on:
+      - database
 
   www:
     image: www
@@ -37,3 +41,13 @@ services:
     ports:
       - 3000:3000
       - 8080:8080
+    depends_on:
+      - api
+      - www
+
+  database:
+    image: mongo
+    volumes:
+      - /data/mongodb/db:/data/db
+    ports:
+      - "27017:27017"
