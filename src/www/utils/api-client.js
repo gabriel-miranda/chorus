@@ -13,7 +13,7 @@ export default class ApiClient {
           data = {},
         } = {},
       ) => {
-        const request = axios[method](`${baseUrl}${path}`, {params, data})
+        const request = axios[method](`${baseUrl}${path}`, {params, data});
         if (before) {
           await before(request);
         }

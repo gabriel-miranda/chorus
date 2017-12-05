@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import ApiClient from '../utils/chorus-api-client';
-import Link from 'next/link'
 
 export default class About extends PureComponent {
   static async getInitialProps({ req }) {
