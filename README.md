@@ -1,19 +1,34 @@
+
 # Chorus
 Chorus is a CMS with modern technologies currently under construction.
 
 ## Contents
 
+- [About](#about)
 - [Installation](#installation)
 - [Development Workflow](#development-workflow)
-- [Deployment](#deployment)
+
+
+### About
+Chorus uses the following technologies
+
+* [Docker](https://github.com/docker)
+* [Nginx](https://nginx.org/)
+* [React.js](https://github.com/facebook/react)
+* [Next.js](https://github.com/zeit/next.js/)
+* [node.js](https://github.com/nodejs/node)
+* [fastify.js](https://github.com/fastify/fastify)
+* [Yarn](https://github.com/yarnpkg/yarn)
+* [Babel](https://babeljs.io)
+* [ESLint](http://eslint.org)
 
 
 ### Prerequisites
-
 * docker
 * docker-compose
 * npm
 * yarn
+
 
 ### Installation
 Clone repo
@@ -32,6 +47,7 @@ Install the dependencies
 ```sh
 yarn
 ```
+
 
 ### Development Workflow
 Start services
