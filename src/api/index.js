@@ -6,7 +6,6 @@ import { graphqlFastify, graphiqlFastify } from 'apollo-server-fastify';
 const MONGO_URL = 'mongodb://database:27017/chorus';
 
 const prepare = (o) => {
-  console.warn('o', o);
   o._id = o._id.toString();
   return o;
 };
@@ -66,7 +65,6 @@ const prepare = (o) => {
       Mutation: {
         createPost: async (root, args, context, info) => {
           const res = await Posts.insert(args);
-          console.warn('res: ', res);
           return prepare(await Posts.findOne({_id: res.insertedIds[0]}));
         },
         createComment: async (root, args) => {
