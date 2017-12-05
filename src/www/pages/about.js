@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ApiClient from '../utils/chorus-api-client';
 import Link from 'next/link'
 
-export default class Home extends PureComponent {
+export default class About extends PureComponent {
   static async getInitialProps({ req }) {
     try {
       const api = new ApiClient(req);
@@ -22,9 +22,9 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div>
-        Hello Chorus:  {this.props.data}
-        <Link href="/about">
-          <a>About</a>
+        About Chorus:  {this.props.data}
+        <Link href="/">
+          <a>Home</a>
         </Link>
       </div>
     );

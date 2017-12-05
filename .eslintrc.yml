@@ -17,3 +17,4 @@ rules:
   no-param-reassign: 0
   no-use-before-define: [2, {functions: false, classes: false}]
   no-confusing-arrow: 0
+  no-return-await: 0

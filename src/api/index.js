@@ -4,7 +4,9 @@ const app = fastify();
 
 app.get('/', (req, res) => res.send({ hello: 'world' }));
 
-app.listen(3000, (err) => {
+app.get('/data', (req, res) => res.send({ data: 'Data from the server' }));
+
+app.listen(3001, (err) => {
   if (err) {
     throw err;
   }

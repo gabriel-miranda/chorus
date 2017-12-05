@@ -1,21 +1,39 @@
 version: "2"
 services:
   api:
+    image: api
     build:
       context: .
       dockerfile: docker/Dockerfile.base
     command: yarn api-dev
     volumes:
       - .:/home/app/chorus
+      - /home/app/chorus/node_modules
     ports:
-      - 3000:3000
+      - 3001:3001
 
   www:
+    image: www
     build:
       context: .
       dockerfile: docker/Dockerfile.base
     command: yarn www-dev
     volumes:
       - .:/home/app/chorus
+      - /home/app/chorus/node_modules
     ports:
+      - 8081:8081
+
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.proxy
+    volumes:
+      - ./nginx/run.sh:/run.sh
+    external_links:
+      - www
+      - api
+    ports:
+      - 3000:3000
       - 8080:8080

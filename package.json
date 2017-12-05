@@ -4,8 +4,10 @@
   "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.17.1",
     "fastify": "^0.35.3",
     "next": "^4.1.4",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -25,9 +27,9 @@
   },
   "scripts": {
     "api-dev": "babel-node ./src/api",
-    "www-dev": "next src/www -p 8080",
+    "www-dev": "next src/www -p 8081",
     "www-build": "next build src/www",
-    "www-prod": "next start src/www -p 8080",
+    "www-prod": "next start src/www -p 8081",
     "lint": "eslint src"
   },
   "repository": {
