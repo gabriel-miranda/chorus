@@ -20,7 +20,7 @@ const prepare = (o) => {
     const typeDefs = [`
       type Query {
         post(_id: String): Post
-        posts: [Post]
+        posts(after: String, count: Int): [Post]
         comment(_id: String): Comment
       }
       type Post {
@@ -49,8 +49,11 @@ const prepare = (o) => {
       Query: {
         post: async (root, {_id}) =>
           prepare(await Posts.findOne(ObjectId(_id))),
-        posts: async () =>
-          (await Posts.find({}).toArray()).map(prepare),
+        posts: async (root, {after, count}) => {
+          const q = after ? {_id: {$gt: ObjectId(after)}} : {};
+          const c = count || 20;
+          return (await Posts.find(q).limit(c).toArray()).map(prepare);
+        },
         comment: async (root, {_id}) =>
           prepare(await Comments.findOne(ObjectId(_id))),
       },
