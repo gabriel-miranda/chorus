@@ -1,3 +1,4 @@
+![Chorus](https://user-images.githubusercontent.com/7026780/33643157-1f26191c-da1c-11e7-899d-9766bfb5cea6.png)
 
 # Chorus
 Chorus is a CMS with modern technologies currently under construction. Right now is for development environments and educational purposes only.
