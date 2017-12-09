@@ -8,7 +8,6 @@
     "apollo-client": "^2.0.4",
     "apollo-link-http": "^1.3.1",
     "apollo-server-fastify": "^1.0.2",
-    "axios": "^0.17.1",
     "fastify": "^0.35.3",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.6.0",
@@ -16,6 +15,7 @@
     "isomorphic-unfetch": "^2.0.0",
     "mongodb": "^2.2.33",
     "next": "^4.1.4",
+    "next-routes": "^1.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
@@ -37,9 +37,8 @@
   },
   "scripts": {
     "api-dev": "babel-node ./src/api",
-    "www-dev": "next src/www -p 8081",
+    "www-dev": "cd src/www && node ./server.js",
     "www-build": "next build src/www",
-    "www-prod": "next start src/www -p 8081",
     "lint": "eslint src"
   },
   "repository": {

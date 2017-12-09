@@ -1,40 +1,25 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
-import { Link } from '../routes';
-
-const Post = post => (
-  <li key={post._id}>
-    <div>
-      <Link route={`/post/${post._id}`}>
-        <a>
-          <h3>{post.title}</h3>
-          <p>{post.content}</p>
-        </a>
-      </Link>
-    </div>
-  </li>
-);
+import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
 
 function PostList({
   data: {
     loading,
     error,
-    posts,
+    post,
   },
 }) {
   if (error) {
     return (
-      <div>Error loading posts</div>
+      <div>Error loading post</div>
     );
   }
-  if (posts && posts.length) {
+  if (post) {
     return (
       <section>
-        <ul>
-          {posts.map(Post)}
-        </ul>
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
       </section>
     );
   }
@@ -45,9 +30,9 @@ PostList.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export const posts = gql`
-  query posts {
-    posts {
+export const post = gql`
+  query Post($id: String) {
+    post(_id: $id) {
       _id
       title
       content
@@ -57,7 +42,8 @@ export const posts = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(posts, {
+export default graphql(post, {
+  options: ({ id }) => ({ variables: { id } }),
   props: ({ data }) => ({
     data,
   }),
