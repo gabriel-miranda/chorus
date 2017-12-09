@@ -21,6 +21,7 @@ Chorus uses the following technologies
 * [node.js](https://github.com/nodejs/node)
 * [fastify.js](https://github.com/fastify/fastify)
 * [GraphQL](http://graphql.org/)
+* [Apollo](https://www.apollographql.com/)
 * [MongoDB](https://www.mongodb.com/)
 * [Yarn](https://github.com/yarnpkg/yarn)
 * [Babel](https://babeljs.io)
@@ -36,7 +37,7 @@ Chorus uses the following technologies
 
 ### Installation
 
-For *macOS* users, in order to run the `mongo` container properly you must create a folder `/data` and enable it for docker in `Docker menu -> Preferences -> File sharing` by adding it there. Then you must make sure you have permissions to write in that folder. You can do it by `chmod -R 777 /data`. Linux ftw.
+For **macOS** users, in order to run the `mongo` container properly you must create a folder `/data` and enable it for docker in `Docker menu -> Preferences -> File sharing` by adding it there. Then you must make sure you have permissions to write in that folder. You can do it by `chmod -R 777 /data`. Linux ftw.
 
 Clone repo
 ```sh
