@@ -4,12 +4,12 @@ RUN useradd --user-group --create-home --shell /bin/false app
 ENV HOME=/home/app
 ENV CHORUS_ROOT=$HOME/chorus
 
-USER app
-
 ADD package.json $CHORUS_ROOT/package.json
 ADD yarn.lock $CHORUS_ROOT/yarn.lock
 
 RUN chown -R app:app $HOME/*
+
+USER app
 
 WORKDIR $CHORUS_ROOT
 RUN yarn

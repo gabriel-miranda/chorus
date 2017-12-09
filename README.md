@@ -35,6 +35,9 @@ Chorus uses the following technologies
 
 
 ### Installation
+
+For *macOS* users, in order to run the `mongo` container properly you must create a folder `/data` and enable it for docker in `Docker menu -> Preferences -> File sharing` by adding it there. Then you must make sure you have permissions to write in that folder. You can do it by `chmod -R 777 /data`. Linux ftw.
+
 Clone repo
 ```sh
 git clone https://github.com/gabriel-miranda/chorus.git
@@ -46,11 +49,6 @@ Make it your own
 rm -rf .git && git init && yarn init
 ```
 > :information_source: This re-initializes the repo and sets up your project.
-
-Install the dependencies
-```sh
-yarn
-```
 
 
 ### Development Workflow
