@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import { MongoClient, ObjectId } from 'mongodb';
 import { makeExecutableSchema } from 'graphql-tools';
 import { graphqlFastify, graphiqlFastify } from 'apollo-server-fastify';
+import HttpStatus from 'http-status-codes';
 
 const MONGO_URL = 'mongodb://database:27017/chorus';
 
@@ -47,8 +48,13 @@ const prepare = (o) => {
 
     const resolvers = {
       Query: {
-        post: async (root, {_id}) =>
-          prepare(await Posts.findOne(ObjectId(_id))),
+        post: async (root, {_id}) => {
+          const post = await Posts.findOne(ObjectId(_id));
+          if (!post) {
+            throw HttpStatus.NOT_FOUND;
+          }
+          return prepare(post);
+        },
         posts: async (root, {after, count}) => {
           const q = after ? {_id: {$gt: ObjectId(after)}} : {};
           const c = count || 20;

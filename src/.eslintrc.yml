@@ -16,3 +16,4 @@ rules:
   jsx-a11y/anchor-is-valid: 0
   no-underscore-dangle: 0
   new-cap: 0
+  import/extensions: 0
