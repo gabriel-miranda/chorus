@@ -1,5 +1,4 @@
 import HttpStatus from 'http-status-codes';
-import { ObjectId } from 'mongodb';
 import { makeExecutableSchema } from 'graphql-tools';
 import shortid from 'shortid';
 
@@ -39,19 +38,19 @@ const typeDefs = [`
 const resolvers = {
   Query: {
     post: async (root, {_id}, ctx) => {
-      const post = await ctx.Posts.findOne(ObjectId(_id));
+      const post = await ctx.Posts.findOne({_id});
       if (!post) {
         throw HttpStatus.NOT_FOUND;
       }
       return prepare(post);
     },
     posts: async (root, {after, count}, ctx) => {
-      const q = after ? {_id: {$gt: ObjectId(after)}} : {};
+      const q = after ? {_id: {$gt: after}} : {};
       const c = count || 20;
       return (await ctx.Posts.find(q).limit(c).toArray()).map(prepare);
     },
     comment: async (root, {_id}, ctx) =>
-      prepare(await ctx.Comments.findOne(ObjectId(_id))),
+      prepare(await ctx.Comments.findOne({_id})),
   },
   Post: {
     comments: async ({_id}, ctx) =>
@@ -59,7 +58,7 @@ const resolvers = {
   },
   Comment: {
     post: async ({postId}, ctx) =>
-      prepare(await ctx.Posts.findOne(ObjectId(postId))),
+      prepare(await ctx.Posts.findOne({postId})),
   },
   Mutation: {
     createPost: async (root, args, ctx, info) => {
