@@ -2,8 +2,9 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
+import Well from './ui/Well';
 
-function PostList({
+function PostSingle({
   data: {
     loading,
     error,
@@ -12,21 +13,21 @@ function PostList({
 }) {
   if (error) {
     return (
-      <div>Error loading post</div>
+      <Well>Error loading post</Well>
     );
   }
   if (post) {
     return (
-      <section>
+      <Well>
         <h1>{post.title}</h1>
         <p>{post.content}</p>
-      </section>
+      </Well>
     );
   }
-  return <div>Loading</div>;
+  return <Well>Loading</Well>;
 }
 
-PostList.propTypes = {
+PostSingle.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
@@ -41,10 +42,10 @@ export const post = gql`
 `;
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
-// available on the `data` prop of the wrapped component (PostList)
+// available on the `data` prop of the wrapped component (PostSingle)
 export default graphql(post, {
   options: ({ id }) => ({ variables: { id } }),
   props: ({ data }) => ({
     data,
   }),
-})(PostList);
+})(PostSingle);

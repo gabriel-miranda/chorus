@@ -3,9 +3,10 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import { Link } from '../routes';
+import Well from './ui/Well';
 
 const Post = post => (
-  <li key={post._id}>
+  <Well key={post._id}>
     <div>
       <Link route={`/post/${post._id}`}>
         <a>
@@ -14,7 +15,7 @@ const Post = post => (
         </a>
       </Link>
     </div>
-  </li>
+  </Well>
 );
 
 function PostList({
@@ -32,9 +33,7 @@ function PostList({
   if (posts && posts.length) {
     return (
       <section>
-        <ul>
-          {posts.map(Post)}
-        </ul>
+        {posts.map(Post)}
       </section>
     );
   }

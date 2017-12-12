@@ -3,15 +3,15 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Post from '../components/Post';
 import withData from '../utils/withData';
+import Container from '../components/layout/Container';
 
 const PostSingle = ({url}) => (
-  <div>
-    Hello Chorus!
+  <Container>
     <Link href="/">
-      <a>Home</a>
+      <a>Back to Home</a>
     </Link>
     <Post id={url.query.id} />
-  </div>
+  </Container>
 );
 
 PostSingle.propTypes = {

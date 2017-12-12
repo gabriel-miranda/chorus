@@ -1,8 +1,8 @@
-const router = require('next-routes');
+import router from 'next-routes';
 
 const routes = router();
 routes
   .add('post', '/post/:id');
 
-module.exports = routes;
-module.exports.Link = routes.Link;
+export const { Link, Router } = routes;
+export default routes;

@@ -1,6 +1,7 @@
 import HttpStatus from 'http-status-codes';
 import { ObjectId } from 'mongodb';
 import { makeExecutableSchema } from 'graphql-tools';
+import shortid from 'shortid';
 
 const prepare = (o) => {
   o._id = o._id.toString();
@@ -62,11 +63,17 @@ const resolvers = {
   },
   Mutation: {
     createPost: async (root, args, ctx, info) => {
-      const res = await ctx.Posts.insert(args);
+      const res = await ctx.Posts.insert({
+        _id: shortid.generate(),
+        ...args,
+      });
       return prepare(await ctx.Posts.findOne({_id: res.insertedIds[0]}));
     },
     createComment: async (root, args, ctx) => {
-      const res = await ctx.Comments.insert(args);
+      const res = await ctx.Comments.insert({
+        _id: shortid.generate(),
+        ...args,
+      });
       return prepare(await ctx.Comments.findOne({_id: res.insertedIds[0]}));
     },
   },

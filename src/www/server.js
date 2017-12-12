@@ -1,10 +1,10 @@
-const fastify = require('fastify');
-const Next = require('next');
-const routes = require('./routes');
+import fastify from 'fastify';
+import next from 'next';
+import routes from './routes';
 
 const port = 8081;
 const dev = process.env.NODE_ENV !== 'production';
-const app = Next({ dev });
+const app = next({ dev });
 
 const handle = routes.getRequestHandler(app);
 
