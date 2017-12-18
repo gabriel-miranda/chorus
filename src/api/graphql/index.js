@@ -11,23 +11,14 @@ const typeDefs = [`
   type Query {
     post(_id: String): Post
     posts(after: String, count: Int): [Post]
-    comment(_id: String): Comment
   }
   type Post {
     _id: String
     title: String
     content: String
-    comments: [Comment]
-  }
-  type Comment {
-    _id: String
-    postId: String
-    content: String
-    post: Post
   }
   type Mutation {
     createPost(title: String, content: String): Post
-    createComment(postId: String, content: String): Comment
   }
   schema {
     query: Query
@@ -49,16 +40,6 @@ const resolvers = {
       const c = count || 20;
       return (await ctx.Posts.find(q).limit(c).toArray()).map(prepare);
     },
-    comment: async (root, {_id}, ctx) =>
-      prepare(await ctx.Comments.findOne({_id})),
-  },
-  Post: {
-    comments: async ({_id}, ctx) =>
-      await (ctx.Comments.find({postId: _id}).toArray()).map(prepare),
-  },
-  Comment: {
-    post: async ({postId}, ctx) =>
-      prepare(await ctx.Posts.findOne({postId})),
   },
   Mutation: {
     createPost: async (root, args, ctx, info) => {
@@ -67,13 +48,6 @@ const resolvers = {
         ...args,
       });
       return prepare(await ctx.Posts.findOne({_id: res.insertedIds[0]}));
-    },
-    createComment: async (root, args, ctx) => {
-      const res = await ctx.Comments.insert({
-        _id: shortid.generate(),
-        ...args,
-      });
-      return prepare(await ctx.Comments.findOne({_id: res.insertedIds[0]}));
     },
   },
 };

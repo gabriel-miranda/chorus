@@ -6,5 +6,4 @@ export const connect = async () => await MongoClient.connect(MONGO_URL);
 
 export const collections = db => ({
   Posts: db.collection('posts'),
-  Comments: db.collection('comments'),
 });
