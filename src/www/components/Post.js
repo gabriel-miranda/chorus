@@ -32,11 +32,12 @@ PostSingle.propTypes = {
 };
 
 export const post = gql`
-  query Post($id: String) {
+  query Post($id: ID!) {
     post(_id: $id) {
       _id
       title
       content
+      created
     }
   }
 `;

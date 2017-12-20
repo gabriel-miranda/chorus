@@ -1,24 +1,21 @@
 import HttpStatus from 'http-status-codes';
 import { makeExecutableSchema } from 'graphql-tools';
 import shortid from 'shortid';
-
-const prepare = (o) => {
-  o._id = o._id.toString();
-  return o;
-};
+import Post from '../models/post';
 
 const typeDefs = [`
   type Query {
-    post(_id: String): Post
+    post(_id: ID!): Post
     posts(after: String, count: Int): [Post]
   }
   type Post {
-    _id: String
-    title: String
-    content: String
+    _id: ID!
+    title: String!
+    content: String!
+    created: String
   }
   type Mutation {
-    createPost(title: String, content: String): Post
+    createPost(title: String!, content: String!): Post
   }
   schema {
     query: Query
@@ -33,21 +30,19 @@ const resolvers = {
       if (!post) {
         throw HttpStatus.NOT_FOUND;
       }
-      return prepare(post);
+      return post;
     },
     posts: async (root, {after, count}, ctx) => {
       const q = after ? {_id: {$gt: after}} : {};
       const c = count || 20;
-      return (await ctx.Posts.find(q).limit(c).toArray()).map(prepare);
+      return await ctx.Posts.find(q).limit(c).sort({ $natural: -1 }).toArray();
     },
   },
   Mutation: {
-    createPost: async (root, args, ctx, info) => {
-      const res = await ctx.Posts.insert({
-        _id: shortid.generate(),
-        ...args,
-      });
-      return prepare(await ctx.Posts.findOne({_id: res.insertedIds[0]}));
+    createPost: async (root, {title, content}, ctx, info) => {
+      const post = new Post(title, content);
+      const res = await ctx.Posts.insert(post);
+      return await ctx.Posts.findOne({_id: res.insertedIds[0]});
     },
   },
 };
