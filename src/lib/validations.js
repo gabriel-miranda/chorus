@@ -4,9 +4,25 @@ const v = (t, m) => {
   }
 };
 
+function created(date) {
+  return v(!isNaN(Date.parse(date)), 'date');
+}
+
+function _id(id) {
+  v(typeof id === 'string' && id.length > 6 && id.length < 15, 'id');
+}
+
+const DBObject = {
+  _id,
+  created,
+};
+
+const Post = {
+  ...DBObject,
+  title: t => v(typeof t === 'string' && t.length > 1 && t.length < 70, 'title'),
+  content: c => v(typeof c === 'string' && c.length > 1 && c.length < 25000, 'content'),
+};
+
 export default {
-  created: d => v(!isNaN(Date.parse(d)), 'date'),
-  _id: i => v(typeof i === 'string' && i.length > 6 && i.length < 15),
-  title: t => v(typeof t === 'string' && t.length > 1 && t.length < 70),
-  content: c => v(typeof c === 'string' && c.length > 1 && c.length < 25000),
+  Post,
 };

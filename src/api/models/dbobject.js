@@ -12,7 +12,7 @@ export default class DBObject {
     }
     validate() {
       for (const k of Object.keys(this)) {
-          validate[k](this[k]);
+          validate[this.constructor.name][k](this[k]);
         }
     }
 }
