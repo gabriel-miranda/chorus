@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Router } from '../../routes';
 import { colors, sizes, transitions } from '../../theme/constants';
-import styled from 'styled-components';
 
 const TIME_OUT = 500;
 const delay = fn => setTimeout(fn, TIME_OUT);

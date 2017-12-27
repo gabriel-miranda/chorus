@@ -13,7 +13,7 @@ const Main = styled.main`
 
 const Container = ({children}) => (
   <div>
-  <LoadingBar />
+    <LoadingBar />
     <Header />
     <Main>
       {children}

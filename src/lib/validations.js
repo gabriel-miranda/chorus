@@ -5,7 +5,7 @@ const v = (t, m) => {
 };
 
 function created(date) {
-  return v(!isNaN(Date.parse(date)), 'date');
+  return v(!Number.isNaN(Date.parse(date)), 'date');
 }
 
 function _id(id) {

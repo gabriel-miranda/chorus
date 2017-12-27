@@ -1,6 +1,5 @@
 import HttpStatus from 'http-status-codes';
 import { makeExecutableSchema } from 'graphql-tools';
-import shortid from 'shortid';
 import Post from '../models/post';
 
 const typeDefs = [`
