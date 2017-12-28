@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Header from '../ui/Header';
 import { sizes } from '../../theme/constants';
+import Header from '../ui/Header';
 import LoadingBar from '../ui/LoadingBar';
+import Main from './Main';
 
-const Main = styled.main`
-  margin: 0 auto;
-  width: ${sizes.main_width};
+const StyledMain = styled(Main)`
+  display: flex;
+  justify-content: space-between;
   padding-top: ${sizes.main_padding};
 `;
 
@@ -15,9 +16,9 @@ const Container = ({children}) => (
   <div>
     <LoadingBar />
     <Header />
-    <Main>
+    <StyledMain>
       {children}
-    </Main>
+    </StyledMain>
   </div>
 );
 

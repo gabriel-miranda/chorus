@@ -3,10 +3,17 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { injectGlobal } from 'styled-components';
 import styledNormalize from 'styled-normalize';
+import { colors } from '../theme/constants';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
   ${styledNormalize}
+  * {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  body {
+    background: ${colors.body};
+  }
   ul {
     margin: 0;
     padding: 0;
