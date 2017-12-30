@@ -13,11 +13,22 @@ export default class LoadingBar extends Component {
   };
 
   componentDidMount() {
+    this.mounted = true;
     Router.onRouteChangeStart = () => {
       this.startAutoIncrement();
     };
     Router.onRouteChangeComplete = () => this.done();
     Router.onRouteChangeError = () => this.done();
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  setStateMounted(state) {
+    if (this.mounted) {
+      this.setState(state);
+    }
   }
 
   done() {
@@ -29,7 +40,7 @@ export default class LoadingBar extends Component {
       const { progress } = this.state;
       if (progress < 100) {
         const value = progress + Math.ceil(Math.random() * 10);
-        this.setState({ progress: value >= 100 ? 100 : value });
+        this.setStateMounted({ progress: value >= 100 ? 100 : value });
       } else {
         clearInterval(increment);
       }
@@ -37,12 +48,12 @@ export default class LoadingBar extends Component {
   }
 
   hide = () => {
-    delay(() => this.setState({done: true}, this.reset));
+    delay(() => this.setStateMounted({done: true}, this.reset));
   }
 
   reset = () => {
-    delay(() => this.setState({progress: 0}, () => {
-      delay(() => this.setState({done: false}));
+    delay(() => this.setStateMounted({progress: 0}, () => {
+      delay(() => this.setStateMounted({done: false}));
     }));
   }
 
