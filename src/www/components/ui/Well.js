@@ -6,4 +6,5 @@ export default styled.article`
   margin-bottom: ${sizes.post_margin};
   border-radius: ${sizes.post_radius};
   background: ${colors.well};
+  width: ${({fullwidth}) => fullwidth ? '100%' : 'auto'};
 `;

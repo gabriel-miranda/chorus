@@ -19,6 +19,11 @@ injectGlobal`
     padding: 0;
     list-style: none;
   }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+  }
 `;
 /* eslint-enable no-unused-expressions */
 

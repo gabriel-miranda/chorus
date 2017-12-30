@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import Well from './ui/Well';
 
+
 function PostSingle({
   data: {
     loading,
@@ -13,18 +14,24 @@ function PostSingle({
 }) {
   if (error) {
     return (
-      <Well>Error loading post</Well>
+      <Well fullwidth>
+        Error loading post
+      </Well>
     );
   }
   if (post) {
     return (
-      <Well>
+      <Well fullwidth>
         <h1>{post.title}</h1>
         <p>{post.content}</p>
       </Well>
     );
   }
-  return <Well>Loading</Well>;
+  return (
+    <Well fullwidth>
+      Loading
+    </Well>
+  );
 }
 
 PostSingle.propTypes = {
