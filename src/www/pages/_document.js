@@ -43,6 +43,8 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
           />
+          <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+          <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
           <title>Chorus</title>
           {this.props.styleTags}
         </Head>
