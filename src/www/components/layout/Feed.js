@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { sizes } from '../../theme/constants';
+import { sizes, mediaQueries } from '../../theme/constants';
 
 export default styled.main`
-  width: ${sizes.feed};
+  max-width: 100%;
+  width: 100%;
+  ${mediaQueries.desktop} {
+    width: ${sizes.feed};
+  }
 `;

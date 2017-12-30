@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { sizes } from '../../theme/constants';
+import { sizes, mediaQueries } from '../../theme/constants';
 
 export default styled.div`
   margin: 0 auto;
-  width: ${sizes.main_width};
+  width: 100%;
+  max-width: 100%;
+  ${mediaQueries.desktop}  {
+    width: ${sizes.main_width};
+  }
 `;

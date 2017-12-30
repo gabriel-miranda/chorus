@@ -50,4 +50,8 @@ export const transitions = {
   loading_bar: 'all .2s ease-in-out',
 };
 
+export const mediaQueries = {
+  desktop: `@media screen and (min-width: ${sizes.main_width})`,
+};
+
 export const LOGO_URL = '/static/logo.png';
