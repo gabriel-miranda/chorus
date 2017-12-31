@@ -23,7 +23,7 @@ function PostSingle({
     return (
       <Well fullwidth>
         <h1>{post.title}</h1>
-        <p>{post.content}</p>
+        <p>{post.content[0].body}</p>
       </Well>
     );
   }
@@ -43,8 +43,11 @@ export const post = gql`
     post(_id: $id) {
       _id
       title
-      content
       created
+      content {
+        type
+        body
+      }
     }
   }
 `;

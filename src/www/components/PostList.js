@@ -11,7 +11,7 @@ const Post = post => (
       <Link route={`/post/${post._id}`}>
         <a>
           <h3>{post.title}</h3>
-          <p>{post.content}</p>
+          <p>{post.excerpt}</p>
         </a>
       </Link>
     </div>
@@ -49,7 +49,8 @@ export const posts = gql`
     posts {
       _id
       title
-      content
+      created
+      excerpt
     }
   }
 `;
