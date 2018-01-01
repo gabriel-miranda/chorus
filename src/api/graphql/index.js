@@ -12,12 +12,14 @@ const typeDefs = [`
     title: String!
     content: [MarkdownBlockOutput!]
     created: String
+    slug: String!
   }
   type PostSummary {
     _id: ID!
     title: String!
     excerpt: String!
     created: String
+    slug: String!
   }
   type MarkdownBlockOutput {
     type: String!
@@ -43,7 +45,7 @@ const resolvers = {
       if (!post) {
         throw HttpStatus.NOT_FOUND;
       }
-      return post;
+      return new Post(post).buildBaseView();
     },
     posts: async (root, {after, count}, ctx) => {
       const q = after ? {_id: {$gt: after}} : {};
