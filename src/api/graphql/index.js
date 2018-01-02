@@ -1,6 +1,6 @@
-import HttpStatus from 'http-status-codes';
 import { makeExecutableSchema } from 'graphql-tools';
 import Post from '../models/post';
+import { NotFoundError, wrapErrorClientReadable } from '../../www/lib/error';
 
 const typeDefs = [`
   type Query {
@@ -43,7 +43,7 @@ const resolvers = {
     post: async (root, {_id}, ctx) => {
       const post = await ctx.Posts.findOne({_id});
       if (!post) {
-        throw HttpStatus.NOT_FOUND;
+        throw wrapErrorClientReadable(new NotFoundError());
       }
       return new Post(post).buildBaseView();
     },

@@ -2,8 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
-import HttpStatus from 'http-status-codes';
 import initApollo from './initApollo';
+import { handleClientError } from '../lib/error';
 
 // Gets the display name of a JSX component for dev tools
 function getComponentDisplayName(Component) {
@@ -47,11 +47,7 @@ export default ComposedComponent =>
             </ApolloProvider>
           );
         } catch (error) {
-          error.graphQLErrors.forEach((e) => {
-            if (Number(e.message) === HttpStatus.NOT_FOUND) {
-              ctx.res.statusCode = HttpStatus.NOT_FOUND;
-            }
-          });
+          handleClientError(error, ctx);
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
