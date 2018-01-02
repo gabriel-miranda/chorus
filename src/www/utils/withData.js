@@ -4,10 +4,23 @@ import PropTypes from 'prop-types';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import initApollo from './initApollo';
 import { handleClientError } from '../lib/error';
+import { buildSlugFromUrl } from '../lib/post';
 
 // Gets the display name of a JSX component for dev tools
 function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || 'Unknown';
+}
+
+function handlePostRedirect(ctx, url, data) {
+  if (url.pathname !== '/post') {
+    return;
+  }
+  const { slug } = data[`Post:${url.query.id}`];
+  if (buildSlugFromUrl(url) === slug) {
+    return;
+  }
+  ctx.res.writeHead(301, { Location: `/${slug}` });
+  ctx.res.end();
 }
 
 export default ComposedComponent =>
@@ -62,6 +75,8 @@ export default ComposedComponent =>
             data: apollo.cache.extract(),
           },
         };
+
+        handlePostRedirect(ctx, url, serverState.apollo.data);
       }
 
       return {

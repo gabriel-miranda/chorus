@@ -44,6 +44,7 @@ export const post = gql`
       _id
       title
       created
+      slug
       content {
         type
         body

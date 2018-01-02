@@ -18,6 +18,7 @@ export function encodeSlug(title, id) {
   return `${sanitizedTitle}${SLUG_SEPARATOR}${id}`;
 }
 
-export function decodeSlug(slug) {
-  return slug.split(SLUG_SEPARATOR);
+export function buildSlugFromUrl(url) {
+  const { slug, id } = url.query;
+  return `${slug}${SLUG_SEPARATOR}${id}`;
 }
