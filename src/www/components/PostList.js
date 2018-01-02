@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import { Link } from '../routes';
 import Well from './ui/Well';
+import { encodeSlug } from '../lib/post';
 
 const Post = post => (
   <Well key={post._id}>
     <div>
-      <Link route={`/post/${post._id}`}>
+      <Link route={`/${encodeSlug(post.title, post._id)}`}>
         <a>
           <h3>{post.title}</h3>
           <p>{post.excerpt}</p>
