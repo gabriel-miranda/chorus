@@ -1,5 +1,5 @@
 import shortid from 'shortid';
-import validate from '../../lib/validations';
+import validate from '../../www/lib/validations';
 
 export default class DBObject {
   constructor(props) {

@@ -1,5 +1,5 @@
 import DBObject from './dbobject';
-import { EXCERPT_LENGHT, encodeSlug } from '../../lib/post';
+import { EXCERPT_LENGHT, encodeSlug } from '../../www/lib/post';
 
 export default class Post extends DBObject {
   buildBaseView() {
